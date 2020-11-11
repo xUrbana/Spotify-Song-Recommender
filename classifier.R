@@ -44,7 +44,7 @@ k.means <- function(input, non.data.cols = NA) {
   df$distance <- distances
   
   # Return the data ordered by distance
-  df[order(df$distance),]
+  df$id[order(df$distance)]
 }
 
 read.data <- function(path, drop.cols = NULL, order.cols = NULL, factors = NULL) {

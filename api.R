@@ -6,7 +6,7 @@ source("classifier.R")
 #   instrumentalness, key, liveness, loudness
 
 #* @post /classifier
-function(req) {
+function(req, k = 5) {
   
   # All inputs are numeric, so convert...
   input <- as.numeric(req$body)
@@ -15,5 +15,5 @@ function(req) {
   result <- k.means(input, non.data.cols = c("id"))
   
   # Use k = 5
-  list(recommendations = result$id[1:5])
+  list(recommendations = result[1:k])
 }
